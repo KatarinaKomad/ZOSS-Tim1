@@ -1,7 +1,10 @@
 # Mitigations
 
-* [Android security model](photos/security_model%20-%20android.png)  
-* [iOS security model](photos/security_model%20-%20ios.png)
+## Andorid security model
+![Android security model](photos/security_model-android.png)  
+
+## iOS ssecurity model
+![iOS security model](photos/security_model-ios.png)
 
 ## 1. Isolation mechanism (app sandboxing)
 Sandbox environment is provided for each and every application executing in the device. In this way they cannot modify other application.
