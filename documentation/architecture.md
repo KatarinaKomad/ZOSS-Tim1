@@ -1,12 +1,12 @@
 # Architecture
 
-<p>This document will explain the module decomposition, focusing on clarifying the architecture specific to Android and iOS operating systems, and will include a detailed overview of the layers that make up the architecture of each system. 
+This document will explain the module decomposition, focusing on clarifying the architecture specific to Android and iOS operating systems, and will include a detailed overview of the layers that make up the architecture of each system. 
 
 The Android operating system is characterized by its layered structure, encompassing components such as the application layer, framework layer, library layer, runtime layer, hardware abstract layer and kernel. 
 
 Similarly, the iOS operating system has a layered architecture, including the Cocoa Touch layer, Media layer, Core Services, and the underlying Core OS layer. 
 
-Through this system analysis, the document aims to provide a detailed insight into the hierarchical composition of these operating systems, facilitating the understanding of their design principles and functional interactions.</p>
+Through this system analysis, the document aims to provide a detailed insight into the hierarchical composition of these operating systems, facilitating the understanding of their design principles and functional interactions.
 
 ## Android
 
@@ -34,22 +34,23 @@ Source model - Open Source
         <p>Core system services and different components of Android like ART and HAL are built from the native libraries, which are written in C/C++. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94) These libraries interact directly with the kernel or other interfaces and don't depend on a userspace-based HAL implementation and provide support in building user interface application framework, drawing graphics and accessing database. [[6]](https://source.android.com/docs/core/architecture)</p>
 
 *   **Application framework**  
-        <p>Android SDK provides tool and API libraries to develop applications on Android java. Important features are database for storing data, support for audio, video and image formats, debugging tools, etc. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94)  
+        <p>Android SDK provides tool and API libraries to develop applications on Android java. Important features are database for storing data, support for audio, video and image formats, debugging tools, etc. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94) 
+
     Application framework consists of:
-    - *Activity Manager* (manages activity life cycle of apps), 
-    - *Content Providers* - manage sharing data between apps, 
-    - *Telephony Manager* - manage and access voice calls within application, 
-    - *Window Manager* - oversees the creation, positioning, and management of windows on the device's screen
-    - *Package Manager* - provides access to information about installed applications [[2]](https://www.ajtmr.com/papers/Vol5Issue2/Vol5Iss2_P4.pdf)</p>
+    - *Activity Manager* - manages activity life cycle of apps. 
+    - *Content Providers* - manage sharing data between apps. 
+    - *Telephony Manager* - manage and access voice calls within application. 
+    - *Window Manager* - oversees the creation, positioning, and management of windows on the device's screen.
+    - *Package Manager* - provides access to information about installed applications. [[2]](https://www.ajtmr.com/papers/Vol5Issue2/Vol5Iss2_P4.pdf)</p>
 
 *   **System applications**  
-        <p>Applications are located at the top most layer of the Android stack. These consist of both native and third-party applications such as web browser, email, SMS messenger, etc., which are installed by the user. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94) 
-        <p>System apps are pre-installed apps in the system partition with the ROM. In other words, a system app is simply an app placed under /system/app folder on an Android device. /system/app is a read-only folder. Android device users do not have access to this partition and they cannot directly install or uninstall apps to/from it. Apps such as camera, settings, messages, Google Play Store, etc. come pre-installed with the phone and manufacturers do not generally provide an option to remove such apps as this might impact the functioning of device. []</p>
+        <p>Applications are located at the top most layer of the Android stack. These consist of both native and third-party applications such as web browser, email, SMS messenger, etc., which are installed by the user. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94)</p> 
+        <p>System apps are pre-installed apps in the system partition with the ROM. In other words, a system app is simply an app placed under /system/app folder on an Android device. /system/app is a read-only folder. Android device users do not have access to this partition and they cannot directly install or uninstall apps to/from it. Apps such as camera, settings, messages, Google Play Store, etc. come pre-installed with the phone and manufacturers do not generally provide an option to remove such apps as this might impact the functioning of device.</p>
 
 ## iOS
 ![iOS architecture](photos/architecture-ios.png)
 
-Kernel - OS X, UNIX  
+Kernel - OS X, BSD UNIX  
 Language -  Objective C  
 Source model -  Closed, but iOS components are open source
 
@@ -59,8 +60,8 @@ Source model -  Closed, but iOS components are open source
         <p>The iOS hardware layer consists of the physical components within Apple devices, including custom-designed processors, memory, storage, displays, cameras, sensors, and connectivity features. These components work in unity to support the iOS operating system and deliver a high-performance and integrated user experience. This layer contains the physical chips, which are soldered to the iOS circuitry. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94)</p>
 
 *   **Core OS**  
-        <p>The Core OS layer is the last layer of the iOS stack and sits directly on top of the device hardware providing the low level interface to the underlying hardware. System components of the Core OS Layer provides much of the same functionality as any other a UNIX multitasking kernel.[[7]](https://sci-hub.se/10.1109/EMES.2017.7980403)
-        Amongst other things, the kernel is responsible for low level networking, input/output, inter-process communication, access to external accessories and the usual fundamental operating system services such as memory management (allocation and de-allocation once the application has finished using it), file system handling and threads, network management, etc.[[8]](https://rcet.org.in/uploads/academics/rohini_54027514709.pdf?fbclid=IwAR3z4GMmnzDOsN6vLClm3wIHh06NjAFile0NY7ayFDVGXgkE7iAYc9sg6Hc) </p>
+        <p>The Core OS layer is the last layer of the iOS stack and sits directly on top of the device hardware providing the low level interface to the underlying hardware. System components of the Core OS Layer provides much of the same functionality as any other a UNIX multitasking kernel. [[7]](https://sci-hub.se/10.1109/EMES.2017.7980403)
+        Amongst other things, the kernel is responsible for low level networking, input/output, inter-process communication, access to external accessories and the usual fundamental operating system services such as memory management (allocation and de-allocation once the application has finished using it), file system handling and threads, network management, etc. [[8]](https://rcet.org.in/uploads/academics/rohini_54027514709.pdf?fbclid=IwAR3z4GMmnzDOsN6vLClm3wIHh06NjAFile0NY7ayFDVGXgkE7iAYc9sg6Hc)</p>
 
 *   **Core services**  
         <p>This forms the foundation layer on which above layers are built. It provides several features like data protection, iCloud storage, file sharing support, XML Support features, SQLite database, In-App purchases, etc. [[1]](https://sci-hub.se/10.1016/j.cosrev.2021.100372?fbclid=IwAR3hN0s2rbXV_enFIgu_ykp1gyXQFtFdsNNZjMZ10MVzwVAG9F_wM8n9a94)
