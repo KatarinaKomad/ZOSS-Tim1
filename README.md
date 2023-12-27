@@ -27,22 +27,15 @@ This exploration will strive to maintain a balance between conciseness and compr
   It highlights key components and fundamental principles guiding their designs.  
   These components will further be used as key points of analysis in terms of targeted modules in common threats and attacks.
 
-* ### [Threats](documentation/threats.md) (TODO)
+* ### [IOS security analysis - media layer](documentation/ios/a-media-layer-analysis.md)
+    - Identifies and documents potential threats iOS systems might face.
+    - Gives detailed description of different types of attacks that could exploit vulnerabilities in the iOS systems.
+    - Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.
 
-  Identifies and documents potential threats that the Android and iOS systems might face.
-
-* ### [Attacks](documentation/attacks.md) (TODO)
-
-  Detailed description of different types of attacks  that could exploit vulnerabilities in the Android and iOS systems.
-
-* ### [Resources](documentation/resources.md) (TODO)
-
-  Document includes resources commonly targeted by potential threats and attacks, making it crucial to safeguard them against exploitation through security measures.
-
-* ### [Mitigations](documentation/mitigations.md) (TODO)
-
-  Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.  
-  This section focuses on preventive measures and best practices to enhance the security posture of Android and iOS systems.
+* ### [Android security analysis - system applications](documentation/android-system-applications.md)
+    - Identifies and documents potential threats Android systems might face.
+    - Gives detailed description of different types of attacks that could exploit vulnerabilities in the Android systems.
+    - Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.
   
 * ### [Project references](documentation/project-references.md)
 
