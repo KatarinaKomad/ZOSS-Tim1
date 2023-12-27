@@ -11,7 +11,7 @@ It is every organization's/developer's responsibility to make sure that the code
 This security analysis consists of three parts:
 1. [Media input vulnerbilities analysis](media-input-vulnerbilities.md)
 2. [Media access vulnerbilities analysis](media-access-vulnerbilities.md)
-2. [Microphone/Camera access vulnerbilities analysis](unauthorized-access-to-mic-cam.md.md)
+2. [Microphone/Camera access vulnerbilities analysis](unauthorized-access-to-mic-cam.md)
 
 ## Resources 
 1. [iOS Mobile App Security — Part I: Best practices for iOS mobile developers](https://medium.com/@kavithakumarasamy89/ios-mobile-app-security-part-i-best-practices-for-ios-mobile-developers-1220748b1f3)
