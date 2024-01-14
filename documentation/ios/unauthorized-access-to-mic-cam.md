@@ -1,25 +1,24 @@
 # Unauthorized access to microphone/camera
 
-Unauthorized access to the microphone or camera on iOS phones refers to an application or process gaining access to the device's microphone or camera without the explicit consent of the user. Apple places a strong emphasis on user privacy and security, and it has implemented various measures to protect users from unauthorized access to sensitive components like the microphone and camera.
+Unauthorized access to the microphone or camera on iOS phones refers to an application or process gaining access to the device's microphone or camera without the explicit consent or knowledge of the user. Apple places a strong emphasis on user privacy and security, and it has implemented various measures to protect users from unauthorized access to sensitive components like the microphone and camera.
 
-![Unauthorized access to microphone/camera](../photos/mic-cam-access.png)
+## **Attack tree**
+
+Following photo shows terms that will further be described in this section. It represents covered attacks, identified threats that could be exploited, and proposed strategies and countermeasures to mitigate those attacks.
+
+<img src="../photos/attackTree-micCam.png" alt="micCam - attack tree" width="50%" />
 
 ### Threats
 
-- ***Privacy Invasion***
+- ***Privacy Invasion And Data Theft as Information Disclosure***
 
     Intruders can spy on individuals in their private spaces, capturing audio and video without the person's knowledge or consent. This can lead to the exposure of sensitive information where secured details will be compromised if screenshot or screen recording is performed. [[3]](#resources)
 
-- ***Data Theft*** 
-
     An attacker could record login/any sensitive screen and capture username and password entered.
-    In video streaming like an app, any paid video content can be streamed and recorded. [[3]](#resources)
+    In video streaming, any paid video content can be streamed and recorded. [[3]](#resources)
 
     Attackers may gain access to confidential conversations or information captured by the microphone or camera, leading to potential identity theft, financial fraud, or other forms of data exploitation.
 
-- ***Device Control and Manipulation***
-
-    Unauthorized access may allow attackers to take control of a device's camera or microphone to manipulate information or create false narratives.
 
 ### Attacks
 
