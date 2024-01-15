@@ -36,14 +36,6 @@ This exploration will strive to maintain a balance between conciseness and compr
     - Identifies and documents potential threats Android systems might face.
     - Gives detailed description of different types of attacks that could exploit vulnerabilities in the Android systems.
     - Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.
-  
-* ### [Project references](documentation/project-references.md)
-
-  All literature and research papers reviewed during development of this project are collected inside this document. It allows readers to explore the referenced materials for further in-depth understanding of the topics discussed.  
-
-  It is sectioned in two parts:
-    1. Reviewed and referenced papers 
-    2. Future readings
 
 ## References
 
