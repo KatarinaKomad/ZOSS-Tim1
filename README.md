@@ -32,7 +32,7 @@ This exploration will strive to maintain a balance between conciseness and compr
     - Gives detailed description of different types of attacks that could exploit vulnerabilities in the iOS systems.
     - Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.
 
-* ### [Android security analysis - system applications](documentation/android-system-applications.md)
+* ### [Android security analysis - system applications](documentation/android/android-system-applications.md)
     - Identifies and documents potential threats Android systems might face.
     - Gives detailed description of different types of attacks that could exploit vulnerabilities in the Android systems.
     - Proposes strategies and countermeasures to mitigate the identified threats and defend against potential attacks.
