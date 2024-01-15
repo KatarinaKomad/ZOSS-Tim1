@@ -96,18 +96,7 @@ Developers should ensure that access to these resources follows a secure policy 
     }</pre>
     
 
-The Data Protection API was designed to make it as simple as possible for application developers to sufficiently protect sensitive user data stored in files and keychain items in case the user's device is lost. 
 
-All the developer has to do is indicate which files or items in the keychain may contain sensitive data and when that data must be accessible. 
-
-For example, the developer may indicate that certain files or keychain items contain sensitive data that needs to be accessible only when the device is unlocked. This is a common scenario, because the device must be unlocked for the user to interact with the application. Alternatively, the developer may indicate that certain files or keychain items must always be accessible and thus cannot be protected when the device is locked. In the application source code, the developer marks protected files and keychain items using constants that define their protection class. The various protection classes are differentiated by whether they protect files or keychain items and when the data protected by that protection class is to be made available (always or only when the device is unlocked, for example). The different protection classes are implemented through a key hierarchy where each key is derived from a number of other keys or data. A partial view of the key hierarchy involved in file encryption is shown in Figure 3.1. At the root of the key hierarchy are the UID key and the user's passcode. The UID key is a key that is unique to each individual iOS device and embedded into the onboard cryptographic accelerator. The actual key itself is not accessible through software, but the accelerator can use this key to encrypt or decrypt specified data. When the device is unlocked, the user's passcode is encrypted many times using a modified PBKDF2 algorithm to generate the passcode key. This passcode key is preserved in memory until the device is locked. The UID key is also used to encrypt a static byte string in order to generate the device key. The device key is used to encrypt all of the class keys that represent each of the filerelated protection classes. Some class keys are also encrypted using the passcode key, which ensures that the class keys are accessible only when the device is unlocked.[[7]](#resources) 
-
-64-89
-
-![Alt text](image.png)
-
-
-The attacks against data protection make use of the fact that the default simple four-digit passcodes are easy to discover using brute force and that the vast majority of data stored by iOS is not currently protected by the Data Protection API. In particular, of the built-in applications, only Mail currently uses the Data Protection API to protect its data. An attacker may jailbreak a captured device and install custom tools to brute force the owner's passcode. Alternatively, the attacker may boot from a custom ramdisk to perform this same attack. Booting a custom ramdisk also facilitates full forensic data acquisition, as shown by the open source iPhone Data Protection Tools. In addition, because iOS saves application state across reboots, users may not notice that their phone has been rebooted and attacked using a custom ramdisk while it has been briefly out of their possession. These attacks against data protection show the importance of application developers making full use of the Data Protection API and enterprises enforcing strong passcode requirements on iOS devices that may hold or process sensitive data.[[7]](#resources)
 
 - ***Data Encryption***
 
@@ -130,6 +119,17 @@ The attacks against data protection make use of the fact that the default simple
             print("Error writing data to file: \(error.localizedDescription)")
         }
         </pre>
+
+    The Data Protection API was designed to make it as simple as possible for application developers to sufficiently protect sensitive user data stored in files and keychain items in case the user's device is lost. 
+
+    All the developer has to do is indicate which files or items in the keychain may contain sensitive data and when that data must be accessible. 
+
+    For example, the developer may indicate that certain files or keychain items contain sensitive data that needs to be accessible only when the device is unlocked. This is a common scenario, because the device must be unlocked for the user to interact with the application. Alternatively, the developer may indicate that certain files or keychain items must always be accessible and thus cannot be protected when the device is locked. In the application source code, the developer marks protected files and keychain items using constants that define their protection class. The various protection classes are differentiated by whether they protect files or keychain items and when the data protected by that protection class is to be made available (always or only when the device is unlocked, for example). The different protection classes are implemented through a key hierarchy where each key is derived from a number of other keys or data. 
+
+    <img src="../photos/keys.png" alt="keys" width="40%" />
+
+    At the root of the key hierarchy are the UID key and the user's passcode. 
+    The UID key is a key that is unique to each individual iOS device and embedded into the onboard cryptographic accelerator. The actual key itself is not accessible through software, but the accelerator can use this key to encrypt or decrypt specified data. When the device is unlocked, the user's passcode is encrypted many times using a modified PBKDF2 algorithm to generate the passcode key. This passcode key is preserved in memory until the device is locked. The UID key is also used to encrypt a static byte string in order to generate the device key. The device key is used to encrypt all of the class keys that represent each of the filerelated protection classes. Some class keys are also encrypted using the passcode key, which ensures that the class keys are accessible only when the device is unlocked.[[7]](#resources) 
 
 - [***Third party library mitigations***](media-input-vulnerbilities.md/#mitigations-2)
 
