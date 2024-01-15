@@ -1,8 +1,12 @@
-# Media access vulnerbilities
+# Media access vulnerabilities
 
-Since the field of attack for malicious or unaturhorized access to media is large, this section will be fucused mainly on perservation of integrity of data in rest.
+Since the field of attack for malicious or unauthorized access to media is large, this section will be focused mainly on preservation of integrity of data in rest.
 
-![media access vulnerbilities](../photos/media-access.png)
+## **Attack tree**
+
+Following photo shows terms that will further be described in this section. It represents covered attacks, identified threats that could be exploited, and proposed strategies and countermeasures to mitigate those attacks.
+
+<img src="../photos/attackTree-mediaAccess.png" alt="mediaAccess - attack tree" width="50%" />
 
 **Media Files Directories**
 
@@ -28,14 +32,13 @@ Since the field of attack for malicious or unaturhorized access to media is larg
 
 
 ## Threats
-Risks of unauthorize resources access can be very compromising in therms of user privacy.</br>
 
-- Invasion of privacy
-- Reputational damage
-- Data theft
+- ***Privacy Invasion And Data Theft as Information Disclosure***
+    
+    Risks of unauthorize resources access can be very compromising in therms of user privacy. One primary concern is the invasion of privacy, as unauthorized individuals or entities gain access to sensitive information, violating the confidentiality of personal data. This breach can lead to reputation damage for individuals and organizations alike, eroding trust and credibility in the eyes of users and stakeholders. Moreover, the potential for data theft increases, exposing sensitive details that can be exploited for malicious purposes, such as identity theft or financial fraud. 
 
 
-## 1. Insecure Data Storage expoloits
+## 1. Insecure Data Storage exploits
 
 If sensitive media files are stored in an insecure manner, for example without strong encryption, attackers may gain 
 unauthorized access by directly accessing the file system. Without proper protection mechanisms application could easily leave media files susceptible to leaks and theft. 
@@ -92,13 +95,27 @@ Developers should ensure that access to these resources follows a secure policy 
     // Handle errors.
     }</pre>
     
+
+The Data Protection API was designed to make it as simple as possible for application developers to sufficiently protect sensitive user data stored in files and keychain items in case the user's device is lost. 
+
+All the developer has to do is indicate which files or items in the keychain may contain sensitive data and when that data must be accessible. 
+
+For example, the developer may indicate that certain files or keychain items contain sensitive data that needs to be accessible only when the device is unlocked. This is a common scenario, because the device must be unlocked for the user to interact with the application. Alternatively, the developer may indicate that certain files or keychain items must always be accessible and thus cannot be protected when the device is locked. In the application source code, the developer marks protected files and keychain items using constants that define their protection class. The various protection classes are differentiated by whether they protect files or keychain items and when the data protected by that protection class is to be made available (always or only when the device is unlocked, for example). The different protection classes are implemented through a key hierarchy where each key is derived from a number of other keys or data. A partial view of the key hierarchy involved in file encryption is shown in Figure 3.1. At the root of the key hierarchy are the UID key and the user's passcode. The UID key is a key that is unique to each individual iOS device and embedded into the onboard cryptographic accelerator. The actual key itself is not accessible through software, but the accelerator can use this key to encrypt or decrypt specified data. When the device is unlocked, the user's passcode is encrypted many times using a modified PBKDF2 algorithm to generate the passcode key. This passcode key is preserved in memory until the device is locked. The UID key is also used to encrypt a static byte string in order to generate the device key. The device key is used to encrypt all of the class keys that represent each of the filerelated protection classes. Some class keys are also encrypted using the passcode key, which ensures that the class keys are accessible only when the device is unlocked.[[7]](#resources) 
+
+64-89
+
+![Alt text](image.png)
+
+
+The attacks against data protection make use of the fact that the default simple four-digit passcodes are easy to discover using brute force and that the vast majority of data stored by iOS is not currently protected by the Data Protection API. In particular, of the built-in applications, only Mail currently uses the Data Protection API to protect its data. An attacker may jailbreak a captured device and install custom tools to brute force the owner's passcode. Alternatively, the attacker may boot from a custom ramdisk to perform this same attack. Booting a custom ramdisk also facilitates full forensic data acquisition, as shown by the open source iPhone Data Protection Tools. In addition, because iOS saves application state across reboots, users may not notice that their phone has been rebooted and attacked using a custom ramdisk while it has been briefly out of their possession. These attacks against data protection show the importance of application developers making full use of the Data Protection API and enterprises enforcing strong passcode requirements on iOS devices that may hold or process sensitive data.[[7]](#resources)
+
 - ***Data Encryption***
 
     Storing sensitive data locally on a user's device should be done securely to prevent unauthorized access. Apple provides several tools and mechanisms to ensure the safe storage of data, such as Keychain Services and Data Protection APIs.[[5]](#resources)
 
-    - Keychain - iOS provide the system and applications with a secure key-value store API called the Keychain for storing sensitive secrets such as keys and passwords. The Keychain provides encrypted storage and permissioned access to the secret items.[[4]](#resources)
+    - Keychain - iOS provide the system and applications with a secure key-value store API called the Keychain for storing sensitive secrets such as keys and passwords. The Keychain provides encrypted storage and permission access to the secret items.[[4]](#resources)
     
-        Since it doesn't handle media files, for data encription is advisable to use Data Protection APIs.
+        Since it doesn't handle media files, for data encryption is advisable to use Data Protection APIs.
 
     - Data Protection API allows you to encrypt files stored on the device, making them inaccessible when the device is locked.  [[5]](#resources)
 
@@ -153,3 +170,4 @@ Examples of insecure file operations include:
 4. [Data Security on Mobile Devices: Current State of the Art, Open Problems, and Proposed Solutions](https://arxiv.org/pdf/2105.12613.pdf)
 5. [Enhancing Security in iOS Applications: Best Practices and Code Examples](https://medium.com/geekculture/enhancing-security-in-ios-applications-best-practices-and-code-examples-41cda1ff62fa)
 6. [Architecture of IOS Operating System](https://www.geeksforgeeks.org/architecture-of-ios-operating-system/)
+7. [iOS Hacker's handbook](./resource/ios-hackers-handbook.pdf)

@@ -9,9 +9,9 @@ This analysis will contain threats, attacks, and adequate mitigation strategies 
 It is every organization's/developer's responsibility to make sure that the code, logic, data, and its communication is secured in the right way to prevent from any intruders tampering and understanding the code. [[1]](#resources)
 
 This security analysis consists of three parts:
-1. [Media input vulnerbilities analysis](media-input-vulnerbilities.md)
-2. [Media access vulnerbilities analysis](media-access-vulnerbilities.md)
-2. [Microphone/Camera access vulnerbilities analysis](unauthorized-access-to-mic-cam.md)
+1. [Media input vulnerabilities analysis](media-input-vulnerabilities.md)
+2. [Media access vulnerabilities analysis](media-access-vulnerabilities.md)
+2. [Microphone/Camera access vulnerabilities analysis](unauthorized-access-to-mic-cam.md)
 
 ## Resources 
 1. [iOS Mobile App Security — Part I: Best practices for iOS mobile developers](https://medium.com/@kavithakumarasamy89/ios-mobile-app-security-part-i-best-practices-for-ios-mobile-developers-1220748b1f3)
